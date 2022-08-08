@@ -19,7 +19,7 @@ public class DriveTrainMain extends SubsystemBase {
 
   private DifferentialDrive diffDrive; 
 
-  public DriveTrainMain(MotorController leftMaster, MotorController rightMaster, Joystick driver, Pose robotPose) {
+  public DriveTrainMain(MotorController leftMaster, MotorController rightMaster, Joystick driver) {
     this.leftMaster = leftMaster;
     this.rightMaster = rightMaster;
     this.driver = driver;

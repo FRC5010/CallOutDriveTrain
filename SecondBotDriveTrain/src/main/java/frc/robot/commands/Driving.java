@@ -7,40 +7,37 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
-import frc.robot.Drive;
 import frc.robot.subsystems.DriveTrainMain;
 
 public class Driving extends CommandBase {
   /** Creates a new Driving. */
-  DriveTrainMain driveSubsystem;
+  DriveTrainMain driveTrain;
   Joystick driver;
-  public Driving(DriveTrainMain driveTrain, Joystick driver) {
+
+  public Driving(DriveTrainMain driveTrain, Joystick driver) { 
+    this.driveTrain = driveTrain; 
+    this.driver = driver; 
+
+    addRequirements(driveTrain);
     // Use addRequirements() here to declare subsystem dependencies.
-      this.driver = driver;
-      driveSubsystem = driveTrain;
-      // Use addRequirements() here to declare subsystem dependencies.
-      addRequirements(driveSubsystem);
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {
-    Drive.setCurrentLimit(0);
-  }
+  public void initialize() {}
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    driveSubsystem.arcadeDrive(
+
+    this.driveTrain.arcadeDrive(
       DriveTrainMain.scaleInputs(-driver.getRawAxis(Constants.throttle)), 
       DriveTrainMain.scaleInputs(driver.getRawAxis(Constants.steer)));
-    }
+  }
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {
-    Drive.setCurrentLimit(38);
-  }
+  public void end(boolean interrupted) {}
 
   // Returns true when the command should end.
   @Override
