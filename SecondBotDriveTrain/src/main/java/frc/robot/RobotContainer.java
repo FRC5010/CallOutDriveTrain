@@ -16,14 +16,14 @@ import edu.wpi.first.wpilibj.XboxController;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  private Joystick driver;
+  private Joystick driverJoystick;
   private Drive drive;
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the button bindings
-    driver = new Joystick(0);
-    drive = new Drive(driver);
+    driverJoystick = new Joystick(0);
+    drive = new Drive(driverJoystick);
     
     configureButtonBindings();
   }
